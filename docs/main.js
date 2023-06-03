@@ -1,11 +1,9 @@
-
-
 var nback;
 var nmusic;
 var currentlyplaying = 1;
 var currentwallpaper;
 
-document.onkeydown = function(evt) {
+document.onkeydown = function (evt) {
     evt = evt || window.event;
     var isEscape = false;
     if ("key" in evt) {
@@ -35,7 +33,7 @@ function onYouTubeIframeAPIReady() {
             'onReady': onPlayerReady,
         }
     });
-    
+
 }
 function onPlayerReady(event) {
     player.addEventListener('onStateChange', function (e) {
@@ -49,8 +47,8 @@ function onPlayerReady(event) {
             $('.play-n-pause > .pixel').addClass('playing');
         } else if (e.data == 2) {
             $('.play-n-pause > .pixel').removeClass('playing');
-    }
-});
+        }
+    });
 }
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -64,18 +62,13 @@ function readTextFile(file, callback) {
     rawFile.send(null);
 }
 $(document).ready(function () {
-    $.ajax({
-        url: window.location.href + 'assets/gifs/',
-        success: function (data) {
-            var count = data.match(/back-/g);
-            nback = count.length / 3;
-            rback = Math.floor(Math.random() * nback) + 1;
+    readTextFile("assets/data/data.json", function (text) {
+        var gifsno = JSON.parse(text)
+        var randomgif = 1 + Math.floor(Math.random() * gifsno['Numberofgifs']);
+        $('body').css('background-image', `url(../assets/gifs/back-${randomgif}.gif)`)
+        currentwallpaper = randomgif
 
-            $('body').css('background-image', `url(../assets/gifs/back-${rback}.gif)`)
-            currentwallpaper = rback
-
-        }
-    });
+    })
     $('.play-n-pause').on('click', function (e) {
         e.preventDefault();
         if ($('.play-n-pause  > .pixel').hasClass('playing')) {
@@ -121,41 +114,38 @@ $(document).ready(function () {
         })
     })
     $('.background-changer > img').on('click', function (e) {
-        $.ajax({
-            url: window.location.href +     'assets/gifs/',
-            success: function (data) {
-                var count = data.match(/back-/g);
-                nback = count.length / 3;
-                rback = Math.floor(Math.random() * nback) + 1;
-                if (currentwallpaper == rback) {
-                    if (currentwallpaper == nback) {
-                        rback = rback - 1;
-                    } else {
-                        rback = rback + 1;
-                    }
+        readTextFile("assets/data/data.json", function (text) {
+            var gifsno = JSON.parse(text)
+            var randomgif = 1 + Math.floor(Math.random() * gifsno['Numberofgifs']);
+            $('body').css('background-image', `url(../assets/gifs/back-${randomgif}.gif)`)
+            if (currentwallpaper == Number) {
+                if (currentwallpaper == gifsno['Numberofgifs']) {
+                    randomgif = randomgif - 1;
+                } else {
+                    randomgif = randomgif + 1;
                 }
-                $('body').css('background-image', `url(../assets/gifs/back-${rback}.gif)`)
-                currentwallpaper = rback
             }
-        });
+            currentwallpaper = randomgif
+
+        })
     })
-    $('.github-btn>img').click(function (e) { 
+    $('.github-btn>img').click(function (e) {
         e.preventDefault();
         window.open('https://github.com/Uoerim')
     });
-    $('.paypalme').click(function (e) { 
+    $('.paypalme').click(function (e) {
         e.preventDefault();
         window.open('https://paypal.me/YosifIbrahim')
     });
-    $('.adslink').click(function (e) { 
+    $('.adslink').click(function (e) {
         e.preventDefault();
         window.open('https://clk.asia/BdFc7a')
     });
-    $('.nevermind').click(function (e) { 
+    $('.nevermind').click(function (e) {
         e.preventDefault();
         $('.support').css('transform', 'translateY(-100vh)');
     });
-    $('.donate-btn').click(function (e) { 
+    $('.donate-btn').click(function (e) {
         e.preventDefault();
         $('.support').css('transform', 'translateY(0)');
     });
