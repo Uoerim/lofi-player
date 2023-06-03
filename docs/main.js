@@ -65,7 +65,7 @@ $(document).ready(function () {
     readTextFile("assets/data/data.json", function (text) {
         var gifsno = JSON.parse(text)
         var randomgif = 1 + Math.floor(Math.random() * gifsno['Numberofgifs']);
-        $('body').css('background-image', `url(../assets/gifs/back-${randomgif}.gif)`)
+        $('body').css('background-image', `url(./assets/gifs/back-${randomgif}.gif)`)
         currentwallpaper = randomgif
 
     })
@@ -117,7 +117,7 @@ $(document).ready(function () {
         readTextFile("assets/data/data.json", function (text) {
             var gifsno = JSON.parse(text)
             var randomgif = 1 + Math.floor(Math.random() * gifsno['Numberofgifs']);
-            $('body').css('background-image', `url(../assets/gifs/back-${randomgif}.gif)`)
+            $('body').css('background-image', `url(./assets/gifs/back-${randomgif}.gif)`)
             if (currentwallpaper == Number) {
                 if (currentwallpaper == gifsno['Numberofgifs']) {
                     randomgif = randomgif - 1;
