@@ -37,6 +37,7 @@ function onYouTubeIframeAPIReady() {
 }
 function onPlayerReady(event) {
     player.addEventListener('onStateChange', function (e) {
+        $('.consolelog').html(e.data);
         if (e.data == -1 || e.data == 3) {
             $('.loading').css('display', 'flex');
             $('.play-n-pause').css('display', 'none');
