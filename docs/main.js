@@ -118,7 +118,7 @@ $(document).ready(function () {
             var gifsno = JSON.parse(text)
             var randomgif = 1 + Math.floor(Math.random() * gifsno['Numberofgifs']);
             $('body').css('background-image', `url(./assets/gifs/back-${randomgif}.gif)`)
-            if (currentwallpaper == Number) {
+            if (currentwallpaper == randomgif) {
                 if (currentwallpaper == gifsno['Numberofgifs']) {
                     randomgif = randomgif - 1;
                 } else {
