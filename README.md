@@ -23,7 +23,9 @@ Its a simple player with Lofi music style, builded with HTML, CSS and JavaScript
 ```
 git clone https://github.com/uoerim/lofi-player.git
 ```
-This project is made using pure HTML, CSS, JS therefore it doesn't require any extra stuff to download
+- This project is made using pure HTML, CSS, JS therefore it doesn't require any extra stuff to download
+- To add more backgrounds add them in the 'gifs' folder and update the number of gifs in the 'data.json' present in the 'data' folder
+- To add more music sources add them in the 'music.json' in the 'data' folder
 
 
 ## Creators
